@@ -1,45 +1,44 @@
-// nested element
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-/**
- * <div id="parents">
- *      <div id="child">
- *          <h1> Iam h1 tag</h1>
- *          <h2> iam h2 tag</h2>
- *      </div>
- *       <div id="child2">
- *          <h1> Iam h1 tag</h1>
- *          <h2> iam h2 tag</h2>
- *      </div>
- *
- * </div>
- */
+//React createElement => Object =>HTMLElement (render)
 
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "Iam h1 tag"),
-    React.createElement("h2", {}, "Iam h2 tag"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "Iam h1 tag"),
-    React.createElement("h2", {}, "Iam h2 tag"),
-  ]),
-  ,
-]);
 
-const nested = ReactDOM.createRoot(document.getElementById("nested"));
+//JSX
 
-nested.render(parent);
+const jsxheading = (
+  <h1 className="head" id="head">
+    RENDER BY JSXx``
+    </h1>
+    
+);
+const jsx = ReactDOM.createRoot(document.getElementById("jsxroot"));
+jsx.render(jsxheading);
 
-console.log(parent);
 
-//single block
 
-const heading = React.createElement(
-  "h1",
-  { id: "heading", xyz: "abc" },
-  "Hello world  from react"
+
+
+//React functional Component
+
+const Title = () => (
+  <div>
+    
+    <h1>Title🚀</h1>
+  </div>
 );
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(heading);
+
+// Component compositions
+const Headingcomponent = () => {
+  return (
+    <div>
+      <Title />
+      <h1>React Component</h1>
+    </div>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Headingcomponent />);
