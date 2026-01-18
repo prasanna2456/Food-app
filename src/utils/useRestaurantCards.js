@@ -9,14 +9,16 @@ const useRestaurantCards = () => {
 
   const fetchData = async () => {
     try {
-      // Fetching from your Render backend proxy
+      // Step 1: Fetch from your OWN backend proxy route
       const response = await fetch("/menu"); 
       const json = await response.json();
       
-      // Swiggy's collection data is usually nested here:
-      setData(json?.data?.cards); 
+      // Step 2: Extract the restaurant cards from the JSON response
+      // Swiggy's collection API usually nests data here:
+      const cards = json?.data?.cards || [];
+      setData(cards);
     } catch (err) {
-      console.error("Frontend fetch failed:", err);
+      console.error("CORS Proxy Fetch failed:", err);
     }
   };
 
