@@ -62,7 +62,7 @@ app.get("/menu", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
+ 
 // 2. Catch-all route: Send index.html for any other request
 // FIXED: Changed "*" to /.*/ to fix Express 5 "Missing parameter name" error
 app.get(/.*/, (req, res) => {
